@@ -10,31 +10,33 @@
 	
 	class itemClass {
 
-		protected $items = [];
-		protected $itemID;
-		protected $itemDesc;
-		protected $itemPrice;
-		protected $itemQuantity;
+		private $itemID;
+		private $itemDesc;
+		private $itemPrice;
+		private $itemQuantity;
 
-
-	public function __construct($id, $desc, $price)	{
+	public function __construct($id, $desc, $price, $qty)	{
 		$this->itemID = $id;
 		$this->itemDesc = $desc;
 		$this->itemPrice = $price;
+		$this->itemQuantity = $qty;
 	}	
 
 	public function getItemID(){
 
-		$this->itemID = $id;
-
+		return $this->itemID;
 	}
 
 	public function getitemDesc(){
-		$this->itemName = $name;
+		
+		return $this->itemDesc;
 	}
 
 	public function getPrice(){
 		return $this->itemPrice;
+	}
+	public function getQuantity(){
+		return $this->itemQuantity;
 	}
 
 }

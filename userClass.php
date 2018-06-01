@@ -26,10 +26,8 @@
 		$this->users[] = $user;
 	}
 
-	public function getUserID($ID){
-
-		$this->userID = $ID;
-
+	public function getUserID(){
+		return $this->userID;
 	}
 
 	public function setUserID($ID){
@@ -48,8 +46,8 @@
 		$this->userName = $name;
 	}
 
-	public function getUserName($name){
-		$this->userName = $name;
+	public function getUserName(){
+		return $this->userName;
 	}
 
 	public function isAdmin(){

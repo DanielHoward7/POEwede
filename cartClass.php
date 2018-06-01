@@ -5,16 +5,14 @@
 	Declaration:
 	This is my own code and any code from other sources will be referenced.
 
-	ShoppingCart class has been created on the basis of Larry Ullman's example
+	ShoppingCart class has been created on the basis of Larry Ullman's example - http://www.peachpit.com/articles/article.aspx?p=1962481&seqNum=2
 -->
 
 <?php  
 
-include("dbConn.php");
+include('itemClass.php');
 
-session_start();
-
-	class ShoppingCart implements Iterator, Countable
+	class ShoppingCart
 	{
 		//array of items in the cart
 		protected $cartItems = array();
@@ -38,33 +36,31 @@ session_start();
 			return $cart;
 		}
 
-
-		public function getItems(){
-
-			return $this->cartItems;
-		}
-
-		public function addItem (Item $item) 
+		public function addItem ($item) 
 		{
 			//iten id required for add
-			$id = $item->getID();
+			$id = $item->getItemID();
 
 				if (!$id ) {
 					echo "Cart requires unique item id";
 				}
+				$this->cartItems[] = $item;
+				//should be an array of orderline not items
+				//that should look like orderline table exactly
+
 				//check if theres an item with that id already then call updateItem else add item to cart
-				if (isset($this->cartItems[$id])) {
-					$this->updateItem($item, $this->cartItems[$item]['qty'] + 1);
-				}else {
-					$this->cartItems[$id] = array('item' => $item, 'qty' => 1);
-					$this->ids[] = $id;
-				}
+				// if (isset($this->cartItems[$id])) {
+				// 	$this->updateItem($item, $this->cartItems[$id]['qty'] + 1);
+				// }else {
+				// 	$this->cartItems[$id] = array('item' => $item, 'qty' => 1);
+				// 	$this->ids[] = $id;
+				// }
 
 		}
 
-		public function updateItem(Item $item, $qty){
+		public function updateItem($item, $qty){
 
-			$id = $cartItems->getID();
+			$id = $item->getItemID();
 
 			//delete or update quantity based on qty
 			if ($qty === 0) {
@@ -75,7 +71,7 @@ session_start();
 		}
 
 		public function deleteItem(Item $item){
-			$id = $item->getID();
+			$id = $item->getItemID();
 
 				//item deleted by idS
 			if (isset($this->cartItems[$id])) {
@@ -90,36 +86,36 @@ session_start();
 
 		}
 
-		//Iterator methods
-		// returns current value
-		public function current(){
+		// //Iterator methods
+		// // returns current value
+		// public function current(){
 
-			//get index for current position
-			$index = $this->ids[$this->position];
+		// 	//get index for current position
+		// 	$index = $this->ids[$this->position];
 
-			//returns item at index
-			return $this->items[$index];
-		}
-		// returns current position
-		public function key(){
-			return $this->position;
-		}
-		//increments position
-		public function next() {
-			$this->position++;
-		}
-		//resets position
-		public function rewind(){
-			$this->position = 0;
-		}
-		//returns bool if value exists at that position
-		public function valid(){
-			return (isset($this->ids[$this->position]));
-		}
-		//count unique items
-		public function count(){
-			return count($this->cartItems);
-		}
+		// 	//returns item at index
+		// 	return $this->items[$index];
+		// }
+		// // returns current position
+		// public function key(){
+		// 	return $this->position;
+		// }
+		// //increments position
+		// public function next() {
+		// 	$this->position++;
+		// }
+		// //resets position
+		// public function rewind(){
+		// 	$this->position = 0;
+		// }
+		// //returns bool if value exists at that position
+		// public function valid(){
+		// 	return (isset($this->ids[$this->position]));
+		// }
+		// //count unique items
+		// public function count(){
+		// 	return count($this->cartItems);
+		// }
 
 		// Check if the cart is empty
 		public function isEmpty() {

@@ -6,17 +6,15 @@
   This is my own code and any code from other sources will be referenced.
 -->
 
-<?php 
-   session_start(); 
-   //check if user is already logged in
-       $sesh_id = $_COOKIE['PHPSESSID'];
-        
-        if (!isset($_SESSION[$sesh_id])) {
-         // header('location: login.php');
-    }
-
+<?php
+    include('dbConn.php'); 
+   // include('itemClass.php');
+   include('stateManager.php'); 
    
-   include('dbConn.php'); 
+   //check if user is already logged in
+    if (!loggedIn()) {
+        header("Location:login.php");
+    }
 ?>
 
 <html>
@@ -42,31 +40,47 @@
     <!-- Table creation for items -->
       <table >
       <tr>
-        <th>Item Sku</th>
+        <!-- <th>Item Sku</th> -->
         <th>Description</th>
         <th>Price</th> 
-        <th>Image</th> 
+        <th>Quantity</th> 
+             <!-- <th>Image</th>  -->
         <th> Add to cart</th>
       </tr> 
-        
-<?php 
-    //sql query 
-    $sql = "SELECT itemID as SKU, itemDesc as DESCRIPTION, itemPrice as PRICE from tbl_item"; 
-    $results = mysqli_query($db, $sql);
-     
-    if ($results->num_rows > 0) {
-        //output of each row
-      while ($user=mysqli_fetch_assoc($results)) {
-        $price = $user['PRICE'];
-        echo "<tr><td>".$user['SKU']."</td><td>".$user['DESCRIPTION']."</td><td>".$price."</td><td> <img class='image' src='images/{$user['SKU']}.jpg'></td><td><input type='button' onclick='popup(". $price .")' class='btn' value='Add To Cart'/></td></tr>";
-      }
-      $_SESSION['currentShop'] = serialize($shop); 
+  
 
-       echo "</table>";
-     }else {
-       echo "0 results";
-     }   
-?>
+ <?php
+
+  $items = array();
+
+  $sql = "SELECT * from tbl_item";
+  $results = mysqli_query($db, $sql);
+
+  while ($record=mysqli_fetch_assoc($results)) {
+
+        $id = $record['itemID'];
+        $desc = $record['itemDesc'];
+        $price = $record['itemPrice'];
+        $qty = $record['itemQuantity'];
+
+        $item = new itemClass($id, $desc, $price, $qty);
+        $items[] = $item;
+
+        $serialItem = serializeItem($item);
+
+        echo "<tr>";
+        echo "<td>$desc</td>";
+        echo "<td>$price</td>";
+        echo "<td>$qty</td>";
+        echo "<td><form action='addToCartBtn.php' method='post'><input type='hidden' name='item' value='{$serialItem}'><input type='submit' onclick='popup(". $price .")' class='btn' value='Add To Cart'/></form></td>";
+        echo "</tr>";
+      }
+
+      echo "</table>";
+
+      echo "<form action='logout.php' method='post'><input type='submit' name='logout' value='Logout'></form>";
+?>       
+
 </div>
   <!-- JS for toggle items button and popup window for add to cart -->
   <script type="text/javascript">

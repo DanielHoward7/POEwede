@@ -38,7 +38,8 @@
 
 <?php 
 
-include('userClass.php');
+include ('cartClass.php');
+include ('stateManager.php');
 
   $email = "";
   $username = "";
@@ -78,8 +79,15 @@ include('userClass.php');
       $user->isAdmin($data['isAdmin']);
       $user->setPassword($data['password']);
 
-      $sesh_id = $_COOKIE['PHPSESSID'];
-      $_SESSION[$sesh_id] = serialize($user);
+      // $sesh_id = $_COOKIE['PHPSESSID'];
+      // $_SESSION[$sesh_id] = serialize($user);
+      saveUser($user);
+
+
+      // $_SESSION[$user->getUserID()] = serialize(new ShoppingCart());
+
+      // saveCart(new ShoppingCart(), $user);
+
 
         return true;
 
