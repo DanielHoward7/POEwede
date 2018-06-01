@@ -9,10 +9,11 @@
 <?php 
    session_start(); 
    //check if user is already logged in
-    //   $sesh_id = $_COOKIE['PHPSESSID'];
-    // if (!isset($_SESSION[$sesh_id])) {
-    //    header('location: login.php');
-    // }
+       $sesh_id = $_COOKIE['PHPSESSID'];
+        
+        if (!isset($_SESSION[$sesh_id])) {
+         // header('location: login.php');
+    }
 
    
    include('dbConn.php'); 
