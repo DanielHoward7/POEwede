@@ -10,13 +10,13 @@
 
 	$cart->addItem($item);
 
-
-
 	saveCart($cart, $user);
 
 	$item = $cart->getCartContents();
 
 	print_r($item);
+
+	// header("location :shop.php");
 
 	// foreach ($item as $key => $value) {
 		// echo $value->getItemDesc() . " " . $item[$value->getItemID()]['qty'];

@@ -58,6 +58,15 @@ include('itemClass.php');
 
 		}
 
+		public function removeItem($item){
+			$id = $item->getItemID();
+
+			if (!$id) {
+				echo "Cart requires unique item Id";
+			}
+			unset($this->cartItems[$id]);
+		}
+
 		public function updateItem($item, $qty){
 
 			$id = $item->getItemID();
@@ -70,52 +79,15 @@ include('itemClass.php');
 			}
 		}
 
-		public function deleteItem(Item $item){
+		public function deleteItem($item){
 			$id = $item->getItemID();
 
 				//item deleted by idS
 			if (isset($this->cartItems[$id])) {
 				unset($this->cartItems[$id]);
-
-				//id value deleted as well
-				$index = array_search($id, $this->ids);
-				unset($this->ids[$index]);
-				//recreate to fill holes
-				$this->ids = array_values($this->ids);
 			}
 
 		}
-
-		// //Iterator methods
-		// // returns current value
-		// public function current(){
-
-		// 	//get index for current position
-		// 	$index = $this->ids[$this->position];
-
-		// 	//returns item at index
-		// 	return $this->items[$index];
-		// }
-		// // returns current position
-		// public function key(){
-		// 	return $this->position;
-		// }
-		// //increments position
-		// public function next() {
-		// 	$this->position++;
-		// }
-		// //resets position
-		// public function rewind(){
-		// 	$this->position = 0;
-		// }
-		// //returns bool if value exists at that position
-		// public function valid(){
-		// 	return (isset($this->ids[$this->position]));
-		// }
-		// //count unique items
-		// public function count(){
-		// 	return count($this->cartItems);
-		// }
 
 		// Check if the cart is empty
 		public function isEmpty() {

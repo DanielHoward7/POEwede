@@ -79,7 +79,8 @@ include ('stateManager.php');
       $user->isAdmin($data['isAdmin']);
       $user->setPassword($data['password']);
 
-      // $sesh_id = $_COOKIE['PHPSESSID'];
+      // $sesh_id = $_
+      ['PHPSESSID'];
       // $_SESSION[$sesh_id] = serialize($user);
       saveUser($user);
 

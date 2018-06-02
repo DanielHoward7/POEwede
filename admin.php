@@ -1,39 +1,24 @@
-<!-- 
-  Name: Daniel
-  Surname: Howard
-  Student Number: 16000911
-  Declaration:
-  This is my own code and any code from other sources will be referenced.
--->
+<?php 
 
-<?php
-    include('dbConn.php'); 
+	include('dbConn.php'); 
    include('stateManager.php'); 
-   
-   //check if user is already logged in
-    if (!loggedIn()) {
-        header("Location:login.php");
-    }
-?>
+ ?>
 
-<html>
+
+ <html>
 <head>
-  <title>Dan's PC Shop</title>
+  <title>Admin</title>
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
   <div class="header">
-    <h2>Home</h2>
+    <h2>Admin</h2>
   </div>
 
   <div class="content">
    
       <button class="btn" onclick="toggle('items');">Show Items</button> 
-      <button class="btn" onclick="toggle('admin');">Show Items</button>
-      <a href="shoppingCart.php">Show cart</a>
-      <a href="admin.php">Show cart</a>
-    
-</div>
+ </div>
 
 <div id=>
   </div>
@@ -47,13 +32,17 @@
         <th>Price</th> 
         <th>Quantity</th> 
              <!-- <th>Image</th>  -->
-        <th> Add to cart</th>
+        <th>Add</th>
+        <th>Edit</th>
+        <th>Delete</th>
+
       </tr> 
   
 
  <?php
   $count = 0;
   $items = array();
+
 
   $sql = "SELECT * from tbl_item";
   $results = mysqli_query($db, $sql);
@@ -67,16 +56,18 @@
 
         $item = new itemClass($id, $desc, $price, $qty);
         $items[] = $item;
-
-        //$serialItem = serializeItem($item);
+		
+		//$serialItem = serializeItem($item);
         $serialItem = serializeItem($item);
-
+        
         echo "<tr>";
         echo "<td>$desc</td>";
         echo "<td>$price</td>";
         echo "<td>$qty</td>";
-        echo "<td> <img class='image' src='images/". $count .".jpg'></td>";
-        echo "<td><form action='addToCartBtn.php' method='post'><input type='hidden' name='item' value='{$serialItem}'><input type='submit' onclick='popup(". $price .")' class='btn' value='Add To Cart'/></form></td>";
+        // echo "<td> <img class='image' src='images/". $count .".jpg'></td>";
+        echo "<td><form action='removeBtn.php' method='post'><input type='hidden' name='item' value='{$id}'><input type='submit'class='btn' value='Remove Item'/></form></td>";
+
+        echo "<td><a href=\"removeBtn.php?id=". $id ."\">Remove Item</a></td>";
         echo "</tr>";
       }
 
