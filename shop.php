@@ -46,7 +46,7 @@
         <th>Description</th>
         <th>Price</th> 
         <th>Quantity</th> 
-             <!-- <th>Image</th>  -->
+        <th>Image</th> 
         <th> Add to cart</th>
       </tr> 
   

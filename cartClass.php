@@ -11,6 +11,7 @@
 <?php  
 
 include('itemClass.php');
+include('orderLine.php');
 
 	class ShoppingCart
 	{
@@ -44,18 +45,16 @@ include('itemClass.php');
 				if (!$id ) {
 					echo "Cart requires unique item id";
 				}
-				$this->cartItems[] = $item;
-				//should be an array of orderline not items
-				//that should look like orderline table exactly
+				foreach ($this->cartItems as $cartItem) {
+					$currentItem = $cartItem->getItem();
 
-				//check if theres an item with that id already then call updateItem else add item to cart
-				// if (isset($this->cartItems[$id])) {
-				// 	$this->updateItem($item, $this->cartItems[$id]['qty'] + 1);
-				// }else {
-				// 	$this->cartItems[$id] = array('item' => $item, 'qty' => 1);
-				// 	$this->ids[] = $id;
-				// }
-
+					if ($currentItem === $item) {
+						$cartItem->increment();
+						return; 
+					}
+				}
+				$orderline = new OrderLine($item);
+				$this->cartItems[] = $orderline;
 		}
 
 		public function removeItem($item){
@@ -64,32 +63,24 @@ include('itemClass.php');
 			if (!$id) {
 				echo "Cart requires unique item Id";
 			}
-			unset($this->cartItems[$id]);
+			foreach ($this->cartItems as $i => $cartItem ) {
+					$currentItem = $cartItem->getItem();
+
+					if ($currentItem === $item) {
+						$cartItem->decrement();
+						
+
+						if ($currentItem->getQty() <= 0) {
+							unset($this->cartItems[$i]);
+						}		
+						return;
+					}
+
+				}
+			
 		}
-
-		public function updateItem($item, $qty){
-
-			$id = $item->getItemID();
-
-			//delete or update quantity based on qty
-			if ($qty === 0) {
-				$this->deleteItem($item);
-			}elseif (($qty>0) && ($qty != $this->cartItems[$id]['qty'])) {
-				$this->cartItems[$id]['qty'] = $qty;
-			}
-		}
-
-		public function deleteItem($item){
-			$id = $item->getItemID();
-
-				//item deleted by idS
-			if (isset($this->cartItems[$id])) {
-				unset($this->cartItems[$id]);
-			}
-
-		}
-
-		// Check if the cart is empty
+		
+			// Check if the cart is empty
 		public function isEmpty() {
 			return (empty($this->cartItems));
 		}

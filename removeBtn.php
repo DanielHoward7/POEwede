@@ -8,8 +8,4 @@
 	$sql = "DELETE FROM tbl_item where itemID='".$id."'";
 	mysqli_query($db, $sql);
 	echo 'record deleted';
-
-
-		
-
 ?>

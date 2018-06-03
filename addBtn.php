@@ -18,9 +18,11 @@
 
 if (isset($_POST['save'])) {
 
-	$sql = "INSERT INTO tbl_item (itemID,itemPrice,itemDesc,itemQuantity) VALUES('$id','$price',".'$desc'.",'$qty')";
-		
-	$sql = substr($sql,0,strlen($sql)-1);
+	$sql = "INSERT INTO tbl_item (itemID,itemPrice,itemDesc,itemQuantity) VALUES($id,$price,'$desc',$qty)";
+
+	$sql = substr($sql,0,strlen($sql));
+	echo $sql;
+	
 	$resultA = $db->query($sql);
 	if ($resultA === FALSE){
 		echo "<p> Unable to perform SQL Insert </p>";

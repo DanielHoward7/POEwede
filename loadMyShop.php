@@ -11,7 +11,29 @@
 <?php
 
 include("dbConn.php");
+
+	// $m = "drop database test";
+	// $n = $db->query($m);
+
+	// if ($n === FALSE) {
+	// 	echo "Alter didnt work";
+	// }
+	// else{
+	// 	echo "Alter worked";
+	// }
     
+
+	// $c = "create database test";
+	// $z = $db->query($c);
+
+	// if ($z === FALSE) {
+	// 	echo "Alter didnt work";
+	// }
+	// else{
+	// 	echo "Alter worked";
+	// }
+    
+
     //Create Table users
  	$sql = "drop table tbl_user";
  	$result = $db->query($sql);
@@ -153,6 +175,7 @@ $sql1 = "drop table tbl_item";
 		 echo "<p>".$sqlCreate3. " done " .mysqli_info($db)."</p>";
 	}
 
+
 	//add primary key
 	$q = "ALTER TABLE tbl_user ADD PRIMARY KEY (userID);";
 	$r = $db->query($q);
@@ -172,6 +195,17 @@ $sql1 = "drop table tbl_item";
 	else{
 		 echo "<p>".$q2. " done " .mysqli_info($db)."</p>";
 	}
+
+		$x = "ALTER TABLE tbl_item MODIFY COLUMN itemID INT NOT NULL auto_increment";
+	$l = $db->query($x);
+
+	if ($l === FALSE) {
+		echo "Alter didnt work";
+	}
+	else{
+		echo "Alter worked";
+	}
+
 
 	
 	$q3 = "ALTER TABLE tbl_orderitem ADD PRIMARY KEY (orderID,itemID)";

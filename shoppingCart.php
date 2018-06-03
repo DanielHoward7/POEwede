@@ -16,17 +16,25 @@
 
 include('stateManager.php');
 
+
 		$user = loadUser();
 		$cart = loadCart($user);
 		$item = $cart->getCartContents();
 
+		$total = 0;
+
 		 foreach ($item as $value) {
-			printf('<p>%s: %d @ $%0.2f each.</p>' , $value->getItemDesc(), $value->getQuantity(), $value->getPrice());
+		 	$total += $value->getItem()->getPrice();
+			echo "<td>".$value->getItem()->getItemDesc(), $value->getItem()->getPrice()."</td>";
 			echo "<td><form action='removeBtn.php' method='post'><input type='hidden' name='remove' value=''><input type='submit' class='btn' value='Remove Item'/></form></td>";
+			  
 		 }
+
 
         echo "</tr>";
         echo "</table>";
+
+        echo $total;
 ?>
 
 </body>
