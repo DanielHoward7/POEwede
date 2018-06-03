@@ -1,3 +1,12 @@
+	<!DOCTYPE html>
+<html>
+<head>
+	<title>Cart Array</title>
+</head>
+<body>
+	<h2>This page isn't hidden to show that each item was added to the cartItems array</h2>
+	<a href="shop.php">Back To Shop</a>
+
 <?php
 	include('stateManager.php');
 
@@ -16,7 +25,7 @@
 
 	print_r($item);
 
-	// header("location :shop.php");
+	 // header("location :shop.php");
 
 	// foreach ($item as $key => $value) {
 		// echo $value->getItemDesc() . " " . $item[$value->getItemID()]['qty'];
@@ -28,3 +37,5 @@
 	// header("Location: shop.php");
 
 ?>
+</body>
+</html>

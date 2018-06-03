@@ -31,7 +31,7 @@
       <button class="btn" onclick="toggle('items');">Show Items</button> 
       <button class="btn" onclick="toggle('admin');">Show Items</button>
       <a href="shoppingCart.php">Show cart</a>
-      <a href="admin.php">Show cart</a>
+      <a href="admin.php">Admin</a>
     
 </div>
 

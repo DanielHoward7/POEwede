@@ -17,7 +17,10 @@
 
   <div class="content">
    
-      <button class="btn" onclick="toggle('items');">Show Items</button> 
+      <button class="btn" onclick="toggle('items');">Show Items</button>
+      <td><a href="addBtn.php?">Add Item</a></td>
+
+
  </div>
 
 <div id=>
@@ -32,10 +35,8 @@
         <th>Price</th> 
         <th>Quantity</th> 
              <!-- <th>Image</th>  -->
-        <th>Add</th>
+        <th>Remove</th>
         <th>Edit</th>
-        <th>Delete</th>
-
       </tr> 
   
 
@@ -65,9 +66,8 @@
         echo "<td>$price</td>";
         echo "<td>$qty</td>";
         // echo "<td> <img class='image' src='images/". $count .".jpg'></td>";
-        echo "<td><form action='removeBtn.php' method='post'><input type='hidden' name='item' value='{$id}'><input type='submit'class='btn' value='Remove Item'/></form></td>";
-
         echo "<td><a href=\"removeBtn.php?id=". $id ."\">Remove Item</a></td>";
+        echo "<td><a href=\"editBtn.php?id=". $id ."\">Edit Item</a></td>";
         echo "</tr>";
       }
 
