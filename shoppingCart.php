@@ -2,25 +2,20 @@
   <html>
   <head>
 	<link rel="stylesheet" type="text/css" href="cartCss.css">
-
-  	<title></title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<title>Shopping Cart</title>
   </head>
   <body>
   
- <a href="shop.php">Back To Shop</a>
+ <a class="w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large" href="shop.php">Back To Shop</a>
 
- 	<div class="shopping-cart">
   <!-- Title -->
-  <div class="title">
-    Shopping Cart
+  <div class="w3-display-container w3-content w3-wide">
+    <h2 style=" font-family:Times New Roman, Georgia, Serif;">Shopping Cart</h2>
   </div>
   <!-- Product  -->
-  <div class="item">
-    <div class="buttons">
-      
-    </div>
-
-	<table>
+  <div class="w3-display-container w3-content w3-wide" style="text-align: center;">
+    <table>
 		<tr>
 			<th>Description</th>
         	<th>Price</th> 
@@ -44,15 +39,15 @@ include('stateManager.php');
 		 	$total += $value->getItem()->getPrice() * $value->getQty();
 		 	echo "<tr>";
 			echo "<td style='text-align: center;'>".$value->getItem()->getItemDesc()."</td>";
-			echo "<td>".$value->getItem()->getPrice()."</td>";
+			echo "<td>R".$value->getItem()->getPrice()."</td>";
 			echo "<td>".$value->getQty()."</td>";
 			
 			$serialItem = serializeItem($value->getItem());
 			
 			// echo "<td><label>1</label><br/>";
 
-			echo "<td><form action='addToCartBtn.php' method='post'><input type='hidden' name='item' value='{$serialItem}'><input type='submit' class='' value='Add Item'/></form>";
-			echo "<form action='removeFromCart.php' method='post'><input type='hidden' name='item' value='{$serialItem}'><input type='submit' class='' value='Remove Item'/></form></td>";
+			echo "<td><form action='addToCartBtn.php' method='post'><input type='hidden' name='item' value='{$serialItem}'><input type='submit' class='w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large' value='Add Item'/></form>";
+			echo "<form action='removeFromCart.php' method='post'><input type='hidden' name='item' value='{$serialItem}'><input type='submit' class='w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large' value='Remove Item'/></form></td>";
 			  
 		 }
 
@@ -60,10 +55,13 @@ include('stateManager.php');
         echo "</tr>";
         echo "</table>";
 		 	echo "<td><div class='total-price' style='padding-bottom: 100px;'> Your total is: R$total</div></td>";
+		 	echo "</div>";
 
 
     	
 ?>
+
+<div style="text-align: center; padding-top: 20px;"><button style=" width: 100px;"class="w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large" type="submit" name="save">Checkout</button></div>
 </div>
 
 </body>

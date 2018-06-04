@@ -2,10 +2,13 @@
 <html>
 <head>
 	<title>Cart Array</title>
+  <link rel="stylesheet" type="text/css" href="cartCss.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
-	<h2>This page isn't hidden to show that each item was added to the cartItems array</h2>
-	<a href="shop.php">Back To Shop</a>
+	<h2>Your item has been removed!</h2>
+    <a class="w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large" href="shoppingCart.php">Go back to your cart</a>
+	<a class="w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large" href="shop.php">Back To Shopping!</a>
 <?php 
 
 	include('stateManager.php');
@@ -24,7 +27,7 @@
 
 	$item = $cart->getCartContents();
 
-	print_r($item);
+	// print_r($item);
 
 
  ?>

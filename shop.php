@@ -19,26 +19,26 @@
 <html>
 <head>
   <title>Dan's PC Shop</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="cartCss.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
   <div class="header">
-    <h2>Home</h2>
+    <h2 style="font-family:Times New Roman, Georgia, Serif; text-align: center;">Welcome To ZZGAMING's Online Store</h2>
+    <h4 style="font-family:Times New Roman, Georgia, Serif; text-align: center;">Your favourite specialist keyboard supplier</h4>
+    <h5 style="font-family:Times New Roman, Georgia, Serif; text-align: center;">View Our shop for great deals on selected brands and keep posted for more products</h5>
   </div>
 
   <div class="content">
    
-      <button class="btn" onclick="toggle('items');">Show Items</button> 
-      <button class="btn" onclick="toggle('admin');">Show Items</button>
-      <a href="shoppingCart.php">Show cart</a>
-      <a href="admin.php">Admin</a>
+      <button class="w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large" onclick="toggle('items');">Show Items</button> 
+      <a class="w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large" href="shoppingCart.php">Show cart</a>
+      <a class="w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large" href="admin.php">Admin</a>
     
 </div>
 
-<div id=>
-  </div>
-<div id="items" class="content">
-    <h1 class="header" style="width: 95%">Items</h1>
+<div id="items" class="shopping-cart">
+    <h2 style="font-family:Times New Roman, Georgia, Serif; text-align: center;">Items</h2>
     <!-- Table creation for items -->
       <table >
       <tr>
@@ -73,16 +73,16 @@
 
         echo "<tr>";
         echo "<td>$desc</td>";
-        echo "<td>$price</td>";
+        echo "<td>R$price</td>";
         echo "<td>$qty</td>";
         echo "<td> <img class='image' src='images/". $count .".jpg'></td>";
-        echo "<td><form action='addToCartBtn.php' method='post'><input type='hidden' name='item' value='{$serialItem}'><input type='submit' onclick='popup(". $price .")' class='btn' value='Add To Cart'/></form></td>";
+        echo "<td><form class='w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large' action='addToCartBtn.php' method='post'><input type='hidden' name='item' value='{$serialItem}'><input type='submit' onclick='popup(". $price .")' class='btn' value='Add To Cart'/></form></td>";
         echo "</tr>";
       }
 
       echo "</table>";
 
-      echo "<form action='logout.php' method='post'><input type='submit' name='logout' value='Logout'></form>";
+      echo "<form style='padding:20px;' action='logout.php' method='post'><input type='submit' name='logout' value='Logout'></form>";
 ?>       
 
 </div>

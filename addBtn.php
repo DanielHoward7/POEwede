@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" type="text/css" href="cartCss.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 	<title>Add</title>
 </head>
 <body>
-	<a href="shop.php">Back To Shop</a>
+	<a class="w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large" href="shop.php">Back To Shop</a>
 
 <?php 
 	
 	include('dbConn.php');
 	include('statemanager.php');
 
-	$id = $_POST['ItemID'];
 	$price = $_POST['ItemPrice'];
 	$desc = $_POST['ItemDesc'];
 	$qty = $_POST['ItemQty'];
 
 if (isset($_POST['save'])) {
 
-	$sql = "INSERT INTO tbl_item (itemID,itemPrice,itemDesc,itemQuantity) VALUES($id,$price,'$desc',$qty)";
+	$sql = "INSERT INTO tbl_item (itemPrice,itemDesc,itemQuantity) VALUES($price,'$desc',$qty)";
 
 	$sql = substr($sql,0,strlen($sql));
 	echo $sql;
@@ -35,21 +37,22 @@ if (isset($_POST['save'])) {
 
 ?>
 
-<form action="addBtn.php" method="post">
+<form class="shopping-cart" style="box-shadow: 5px 10px 18px #888888;" action="addBtn.php" method="post">
+	<div class="w3-display-container w3-content w3-wide ">
+			<h2 style=" font-family:Times New Roman, Georgia, Serif; ">Add item to Shop:</h2>
+	</div>
 	
-	<label id="id">Item ID</label><br/>
-	<input type="text" name="ItemID"><br/>
-
-	<label id="price">Item Price</label><br/>
-	<input type="text" name="ItemPrice"><br/>
 	
-	<label id="desc">Item Name</label><br/>
-	<input type="text" name="ItemDesc"><br/>
+	<label id="price">Item Price:</label><br/>
+	<div style="text-align: center;"><input class="input" style=" font-family:Times New Roman, Georgia, Serif;" type="text" name="ItemPrice"><br/></div>
+	
+	<label style="padding-top: 20px;" id="desc">Item Name:</label><br/>
+	<div style="text-align: center;"><input class="inputdesc" style=" font-family:Times New Roman, Georgia, Serif;" type="text" name="ItemDesc"><br/></div>
 
-	<label id="qty">Total in stock</label><br/>
-	<input type="text" name="ItemQty"><br/>
+	<label style="padding-top: 20px;" id="qty">Total in stock:</label><br/>
+	<div style="text-align: center;"><input class="input" style=" font-family:Times New Roman, Georgia, Serif;" type="text" name="ItemQty"><br/></div>
 
-	<button type="submit" name="save">Insert Item</button>
+	<div style="text-align: center; padding-top: 20px;"><button style=" width: 200px; text-align: center;"class="w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large" type="submit" name="save">Insert Item</button></div>
 
 </form>
 

@@ -8,25 +8,25 @@
  <html>
 <head>
   <title>Admin</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="cartCss.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
   <div class="header">
-    <h2>Admin</h2>
+    <h2 style="font-family:Times New Roman, Georgia, Serif; text-align: center;">Admin</h2>
   </div>
 
   <div class="content">
    
-      <button class="btn" onclick="toggle('items');">Show Items</button>
-      <td><a href="addBtn.php?">Add Item</a></td>
+      <button class="w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large" onclick="toggle('items');">Show Items</button>
+      <a class="w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large " href="addBtn.php">Add Item</a>
 
 
  </div>
+<div id="items" class="shopping-cart">
+    <h2 style=" font-family:Times New Roman, Georgia, Serif; text-align: center;">Items</h2>
 
-<div id=>
-  </div>
-<div id="items" class="content">
-    <h1 class="header" style="width: 95%">Items</h1>
+    <div style="">
     <!-- Table creation for items -->
       <table >
       <tr>
@@ -63,7 +63,7 @@
         
         echo "<tr>";
         echo "<td>$desc</td>";
-        echo "<td>$price</td>";
+        echo "<td>R$price</td>";
         echo "<td>$qty</td>";
         // echo "<td> <img class='image' src='images/". $count .".jpg'></td>";
         echo "<td><a href=\"removeBtn.php?id=". $id ."\">Remove Item</a></td>";
@@ -73,7 +73,7 @@
 
       echo "</table>";
 
-      echo "<form action='logout.php' method='post'><input type='submit' name='logout' value='Logout'></form>";
+      echo "<form class='w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large' action='logout.php' method='post'><input type='submit' name='logout' value='Logout'></form>";
 ?>       
 
 </div>
