@@ -27,7 +27,7 @@
 		return $this->itemID;
 	}
 
-	public function getitemDesc(){
+	public function getItemDesc(){
 		
 		return $this->itemDesc;
 	}

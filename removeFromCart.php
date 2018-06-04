@@ -1,4 +1,4 @@
-	<!DOCTYPE html>
+<DDOCTYPE html>
 <html>
 <head>
 	<title>Cart Array</title>
@@ -6,8 +6,8 @@
 <body>
 	<h2>This page isn't hidden to show that each item was added to the cartItems array</h2>
 	<a href="shop.php">Back To Shop</a>
+<?php 
 
-<?php
 	include('stateManager.php');
 	include_once('orderLine.php');
 
@@ -18,7 +18,7 @@
 
 	$cart = loadCart($user);
 
-	$cart->addItem($item);
+	$cart->removeItem($item);
 
 	saveCart($cart, $user);
 
@@ -26,17 +26,5 @@
 
 	print_r($item);
 
-	 // header("location :shop.php");
 
-	// foreach ($item as $key => $value) {
-		// echo $value->getItemDesc() . " " . $item[$value->getItemID()]['qty'];
-		// print_r($item[$value->getItemID()]);
-	// }
-
-// print_r($cart->getCartContents()['qty']);
-
-	// header("Location: shop.php");
-
-?>
-</body>
-</html>
+ ?>

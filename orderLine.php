@@ -29,12 +29,7 @@
 
  	public function decrement(){
  		$this->quantity--;
- 	}
-
- 	//gets and sets
-
- 	//do increment and decrement quantity
- 
+ 	} 
  }
 
  ?>

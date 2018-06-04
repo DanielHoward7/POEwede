@@ -1,15 +1,32 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Cart</title>
-</head>
-<body>
-	<a href="shop.php">Back To Shop</a>
+  <html>
+  <head>
+	<link rel="stylesheet" type="text/css" href="cartCss.css">
 
-	<h2>Items</h2>
+  	<title></title>
+  </head>
+  <body>
+  
+ <a href="shop.php">Back To Shop</a>
+
+ 	<div class="shopping-cart">
+  <!-- Title -->
+  <div class="title">
+    Shopping Cart
+  </div>
+  <!-- Product  -->
+  <div class="item">
+    <div class="buttons">
+      
+    </div>
 
 	<table>
 		<tr>
+			<th>Description</th>
+        	<th>Price</th> 
+        	<th>Quantity</th> 
+        	<th></th>
+        </tr>	
 		
 
 <?php
@@ -24,18 +41,30 @@ include('stateManager.php');
 		$total = 0;
 
 		 foreach ($item as $value) {
-		 	$total += $value->getItem()->getPrice();
-			echo "<td>".$value->getItem()->getItemDesc(), $value->getItem()->getPrice()."</td>";
-			echo "<td><form action='removeBtn.php' method='post'><input type='hidden' name='remove' value=''><input type='submit' class='btn' value='Remove Item'/></form></td>";
+		 	$total += $value->getItem()->getPrice() * $value->getQty();
+		 	echo "<tr>";
+			echo "<td style='text-align: center;'>".$value->getItem()->getItemDesc()."</td>";
+			echo "<td>".$value->getItem()->getPrice()."</td>";
+			echo "<td>".$value->getQty()."</td>";
+			
+			$serialItem = serializeItem($value->getItem());
+			
+			// echo "<td><label>1</label><br/>";
+
+			echo "<td><form action='addToCartBtn.php' method='post'><input type='hidden' name='item' value='{$serialItem}'><input type='submit' class='' value='Add Item'/></form>";
+			echo "<form action='removeFromCart.php' method='post'><input type='hidden' name='item' value='{$serialItem}'><input type='submit' class='' value='Remove Item'/></form></td>";
 			  
 		 }
 
 
         echo "</tr>";
         echo "</table>";
+		 	echo "<td><div class='total-price' style='padding-bottom: 100px;'> Your total is: R$total</div></td>";
 
-        echo $total;
+
+    	
 ?>
+</div>
 
 </body>
 </html>

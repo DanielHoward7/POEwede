@@ -39,7 +39,7 @@ include('orderLine.php');
 
 		public function addItem ($item) 
 		{
-			//iten id required for add
+			//item id required for add
 			$id = $item->getItemID();
 
 				if (!$id ) {
@@ -48,7 +48,7 @@ include('orderLine.php');
 				foreach ($this->cartItems as $cartItem) {
 					$currentItem = $cartItem->getItem();
 
-					if ($currentItem === $item) {
+					if ($currentItem->getItemDesc() === $item->getItemDesc()) {
 						$cartItem->increment();
 						return; 
 					}
@@ -66,11 +66,11 @@ include('orderLine.php');
 			foreach ($this->cartItems as $i => $cartItem ) {
 					$currentItem = $cartItem->getItem();
 
-					if ($currentItem === $item) {
+					if ($currentItem->getItemDesc() === $item->getItemDesc()) {
 						$cartItem->decrement();
 						
 
-						if ($currentItem->getQty() <= 0) {
+						if ($cartItem->getQty() <= 0) {
 							unset($this->cartItems[$i]);
 						}		
 						return;
