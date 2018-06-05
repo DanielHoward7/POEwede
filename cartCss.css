@@ -24,6 +24,13 @@ label {
 
 
 }
+p {
+  font-family: Times New Roman, Georgia, Serif;
+    letter-spacing: 5px;
+    font-size: 22px;
+    text-align: center;
+
+}
 .w3-tangerine {
     font-family: "Tangerine", serif;
 }

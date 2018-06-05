@@ -166,7 +166,7 @@ $sql1 = "drop table tbl_item";
 	}
 
 	//Create orders table
-	$sqlCreate3 = "CREATE TABLE tbl_orders (orderID int(11) NOT NULL,userID int(11) NOT NULL,orderDate DATE NOT NULL, ses_id varchar(255))";
+	$sqlCreate3 = "CREATE TABLE tbl_orders (orderID varchar(50) NOT NULL,userID int(11) NOT NULL)";
   	$resultCT3 = $db->query($sqlCreate3);
   if ($resultCT3 === FALSE){
 		echo "<p> Unable to perform SQL Create Table </p>";
@@ -196,7 +196,7 @@ $sql1 = "drop table tbl_item";
 		 echo "<p>".$q2. " done " .mysqli_info($db)."</p>";
 	}
 
-		$x = "ALTER TABLE tbl_item MODIFY COLUMN itemID INT NOT NULL auto_increment";
+	$x = "ALTER TABLE tbl_item MODIFY COLUMN itemID INT NOT NULL auto_increment";
 	$l = $db->query($x);
 
 	if ($l === FALSE) {

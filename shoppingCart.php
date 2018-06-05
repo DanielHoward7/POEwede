@@ -51,20 +51,16 @@ include('stateManager.php');
 			  
 		 }
 
-
         echo "</tr>";
         echo "</table>";
 		 	echo "<td><div class='total-price' style='padding-bottom: 100px;'> Your total is: R$total</div></td>";
 		 	echo "</div>";
 
-		 	echo "<div style='text-align: center; padding-top: 20px;'>" . "<form action='removeFromCart.php' method='post'><input type='hidden' name='item' value=''><input type='submit' class='w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large' value='Remove Item'/></form>"."</div>";
+		 	echo "<div style='text-align: center; padding-top: 20px;'>" . "<form action='checkout.php' method='post'><input type='hidden' name='item' value=''><input type='submit' class='w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large' value='Checkout'/></form>"."</div>";
 
 
     	
 ?>
-
-<div style="text-align: center; padding-top: 20px;">
-	<button style=" width: 100px;"class="w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large" type="submit" name="save">Checkout</button>
 </div>
 </div>
 
