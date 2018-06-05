@@ -34,7 +34,7 @@
 		}
 			$orderID = generateID();
 
-		$sql = "INSERT INTO tbl_orders (orderID, userID) VALUES('$orderID',$userID)";
+		$sql = "INSERT INTO tbl_orders (orderID, userID, orderDate) VALUES('$orderID',$userID,current_date())";
 		$result = $db->query($sql);
 		
 		if ($result === FALSE){

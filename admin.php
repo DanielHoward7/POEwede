@@ -30,13 +30,10 @@
     <!-- Table creation for items -->
       <table >
       <tr>
-        <!-- <th>Item Sku</th> -->
         <th>Description</th>
         <th>Price</th> 
         <th>Quantity</th> 
-             <!-- <th>Image</th>  -->
         <th>Remove</th>
-        <th>Edit</th>
       </tr> 
   
 
@@ -65,9 +62,7 @@
         echo "<td>$desc</td>";
         echo "<td>R$price</td>";
         echo "<td>$qty</td>";
-        // echo "<td> <img class='image' src='images/". $count .".jpg'></td>";
         echo "<td><a href=\"removeBtn.php?id=". $id ."\">Remove Item</a></td>";
-        echo "<td><a href=\"editBtn.php?id=". $id ."\">Edit Item</a></td>";
         echo "</tr>";
       }
 

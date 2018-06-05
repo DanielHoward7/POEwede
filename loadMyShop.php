@@ -156,7 +156,7 @@ $sql1 = "drop table tbl_item";
 	}
 
 	//Create orderitem table
-	$sqlCreate2 = "CREATE TABLE tbl_orderitem (orderID int(11) NOT NULL,itemID int(11) NOT NULL, quantity int(11), quoted_price real)";
+	$sqlCreate2 = "CREATE TABLE tbl_orderitem (orderID varchar(50) NOT NULL,itemID int(11) NOT NULL, quantity int(11), quoted_price real)";
   	$resultCT2 = $db->query($sqlCreate2);
   if ($resultCT2 === FALSE){
 		echo "<p> Unable to perform SQL Create Table </p>";
@@ -166,7 +166,7 @@ $sql1 = "drop table tbl_item";
 	}
 
 	//Create orders table
-	$sqlCreate3 = "CREATE TABLE tbl_orders (orderID varchar(50) NOT NULL,userID int(11) NOT NULL)";
+	$sqlCreate3 = "CREATE TABLE tbl_orders (orderID varchar(50) NOT NULL,userID int(11) NOT NULL, orderDate DATE)";
   	$resultCT3 = $db->query($sqlCreate3);
   if ($resultCT3 === FALSE){
 		echo "<p> Unable to perform SQL Create Table </p>";
@@ -209,8 +209,6 @@ $sql1 = "drop table tbl_item";
 
 	
 	$q3 = "ALTER TABLE tbl_orderitem ADD PRIMARY KEY (orderID,itemID)";
-	// ADD CONSTRAINT orderID_FK FOREIGN KEY (orderID) REFERENCES tbl_orders(orderID);";
-	// ADD CONSTRAINT itemID_FK FOREIGN KEY (itemID) REFERENCES tbl_item(itemID)
 	$r3 = $db->query($q3);
 	 if ($r3 === FALSE){
 		echo "<p> Unable to perform SQL alter </p>";
@@ -238,7 +236,8 @@ $sql1 = "drop table tbl_item";
 	else{
 		 echo "<p>".$sq5. " done " .mysqli_info($db)."</p>";
 	}
-
+ <a class="w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large" href="shop.php">Back To Shop</a>
+ echo '<a href="index.php">To login</a>'
 
 
 

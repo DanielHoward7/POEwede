@@ -34,6 +34,8 @@
       <button class="w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large" onclick="toggle('items');">Show Items</button> 
       <a class="w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large" href="shoppingCart.php">Show cart</a>
       <a class="w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large" href="adminLogin.php">Admin</a>
+      <a class="w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large" href="history.php">View Purchase History</a>
+
     
 </div>
 
