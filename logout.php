@@ -1,6 +1,6 @@
 <?php 
 	include('stateManager.php');
 	logout();
-	header("location: login.php");
+	header("location: index.php");
 
  ?>

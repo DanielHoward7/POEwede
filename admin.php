@@ -20,7 +20,7 @@
    
       <button class="w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large" onclick="toggle('items');">Show Items</button>
       <a class="w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large " href="addBtn.php">Add Item</a>
-
+      <a class="w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large" href="shop.php">Back To Shop</a>
 
  </div>
 <div id="items" class="shopping-cart">

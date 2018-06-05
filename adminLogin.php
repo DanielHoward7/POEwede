@@ -6,33 +6,36 @@
 	This is my own code and any code from other sources will be referenced.
 -->
 
+
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" type="text/css" href="cartCss.css">
   <title>Login</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
   <div class="header">
     <h2>Login</h2>
   </div>
+  <div class="w3-display-container w3-content w3-wide" style="padding-left: 43%;">
 
-  <form method="post" action="login.php">
-    <div class="input">
+  <form method="post" action="admin.php">
+    <div class="input" style="text-align: center;">
       <label>Username</label>
       <input type="text" name="username">
     </div>
-    <div class="input">
+    <div class="input" style="text-align: center;">
       <label>Password</label>
       <input type="password" name="password">
     </div>
-    <div class="input">
-      <button type="submit" name="login" class="btn">Login</button>
+    <div class="input" style="text-align: center;">
+      <button class="w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large" type="submit" name="login" class="btn">Login</button>
     </div>
     <p>
       Not registered? <a href="register.php">Sign Up!</a>
     </p>
   </form> 
+  </div>
 </body>
 </html>
 
@@ -84,11 +87,9 @@ include ('stateManager.php');
       // $_SESSION[$sesh_id] = serialize($user);
       saveUser($user);
 
-
-      // $_SESSION[$user->getUserID()] = serialize(new ShoppingCart());
-
-      // saveCart(new ShoppingCart(), $user);
-
+      if ($user->isAdmin() === True) {
+        echo "YES!";
+      }
 
         return true;
 

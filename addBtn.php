@@ -23,7 +23,6 @@ if (isset($_POST['save'])) {
 	$sql = "INSERT INTO tbl_item (itemPrice,itemDesc,itemQuantity) VALUES($price,'$desc',$qty)";
 
 	$sql = substr($sql,0,strlen($sql));
-	echo $sql;
 	
 	$resultA = $db->query($sql);
 	if ($resultA === FALSE){

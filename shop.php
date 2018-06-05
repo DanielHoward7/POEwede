@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
-  <div class="header">
+  <div class="header" style="box-shadow: 5px 10px 18px #888888; width: 50%; margin: auto;">
     <h2 style="font-family:Times New Roman, Georgia, Serif; text-align: center;">Welcome To ZZGAMING's Online Store</h2>
     <h4 style="font-family:Times New Roman, Georgia, Serif; text-align: center;">Your favourite specialist keyboard supplier</h4>
     <h5 style="font-family:Times New Roman, Georgia, Serif; text-align: center;">View Our shop for great deals on selected brands and keep posted for more products</h5>
@@ -33,7 +33,7 @@
    
       <button class="w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large" onclick="toggle('items');">Show Items</button> 
       <a class="w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large" href="shoppingCart.php">Show cart</a>
-      <a class="w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large" href="admin.php">Admin</a>
+      <a class="w3-button w3-blue w3-hover-aqua w3-border w3-border-black w3-round-large" href="adminLogin.php">Admin</a>
     
 </div>
 
